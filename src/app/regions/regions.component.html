@@ -1,0 +1,40 @@
+<div (click)="select($event,-1)">
+    <div class="all"> 
+        <div>Regions:
+            <ul>
+                <li *ngFor="let region of RegionArray;index as i" 
+                (click)="select($event,i)" [class.selected]="i === selected">
+                    <p *ngIf="region.friendly" style="background-color:green;">{{region.name}}</p>
+                    <p *ngIf="!region.friendly" style="background-color:red;">{{region.name}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="selected > -1"> 
+        <h2>Edit:</h2>
+        <div>
+            <label>Region:
+                <input (click)="lock($event)" [(ngModel)]="RegionArray[selected].name" />
+                <p>Data przybycia: {{RegionArray[selected].dateArrival | date: 'dd-MM-yyyy'}}</p>
+                <p>Data powrotu: {{RegionArray[selected].dateReturn | date: 'dd-MM-yyyy'}}</p>
+                <div *ngIf="(RegionArray[selected].tribeCount >= 5 && RegionArray[selected].tribeCount < 20) || (RegionArray[selected].tribeCount >= 20 && (RegionArray[selected].tribeCount%10 >= 5 || RegionArray[selected].tribeCount%10 <= 1))">
+                    <p>{{RegionArray[selected].tribeCount}} plemion</p>
+                </div>
+                <div *ngIf="(RegionArray[selected].tribeCount > 1 && RegionArray[selected].tribeCount < 5) || (RegionArray[selected].tribeCount >= 20 && (RegionArray[selected].tribeCount%10 < 5 && RegionArray[selected].tribeCount%10 > 1))">
+                    <p>{{RegionArray[selected].tribeCount}} plemiona</p>
+                </div>
+                <div *ngIf="RegionArray[selected].tribeCount == 1">
+                    <p>{{RegionArray[selected].tribeCount}} plemię</p>
+                </div>
+                <p>Niezwykłe przedmioty:</p>
+                <ul>
+                    <li *ngFor="let amazingItem of RegionArray[selected].amazingItems;index as i">
+                        {{amazingItem}}
+                    </li>
+                </ul>
+                
+                <button (click)="save()">Save</button> 
+            </label>
+        </div>
+    </div>
+</div>
