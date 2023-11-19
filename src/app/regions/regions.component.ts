@@ -21,10 +21,6 @@ export class RegionsComponent implements OnInit {
     ]
     this.selected = -1;
   }
-  // select(event: { stopPropagation: () => void; },which: number): void {
-  //   this.selected = which;
-  //   event.stopPropagation();
-  // }
   select(which: number): void {
        this.selected = which;
      }

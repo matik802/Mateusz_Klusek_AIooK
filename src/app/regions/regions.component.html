@@ -1,16 +1,4 @@
-<!-- <div (click)="select($event,-1)"> -->
-    <div>
-    <!-- <div class="all"> 
-        <div>Regions:
-            <ul>
-                <li *ngFor="let region of RegionArray;index as i" 
-                (click)="select($event,i)" [class.selected]="i === selected">
-                    <p *ngIf="region.friendly" style="background-color:green;">{{region.name}}</p>
-                    <p *ngIf="!region.friendly" style="background-color:red;">{{region.name}}</p>
-                </li>
-            </ul>
-        </div>
-    </div> -->
+<div>
     <app-manage-region-list [RegionList]="RegionArray" [selected]="selected" (selectRegionInParent)="select($event)"> </app-manage-region-list>
     <div *ngIf="selected > -1"> 
         <h2>Edit:</h2>
