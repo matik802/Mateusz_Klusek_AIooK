@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegionComponent } from '../region/region.component';
 
 @Component({
@@ -6,22 +6,28 @@ import { RegionComponent } from '../region/region.component';
   templateUrl: './regions.component.html',
   styleUrls: ['./regions.component.css']
 })
-export class RegionsComponent {
+export class RegionsComponent implements OnInit {
   
   RegionArray: RegionComponent[];
   selected: number;
 
   constructor() {
+    
+  }
+  ngOnInit(): void {
     this.RegionArray = [
       new RegionComponent("Kreta",new Date('2000-03-18'),new Date('2000-03-26'),3,["Statue","Pearl"],true),
       new RegionComponent("Rodos",new Date('2004-03-11'),new Date('2004-03-14'),20,["Sword","Crossbow"],false)
     ]
     this.selected = -1;
   }
-  select(event: { stopPropagation: () => void; },which: number): void {
-    this.selected = which;
-    event.stopPropagation();
-  }
+  // select(event: { stopPropagation: () => void; },which: number): void {
+  //   this.selected = which;
+  //   event.stopPropagation();
+  // }
+  select(which: number): void {
+       this.selected = which;
+     }
   save(): void {
     this.selected = -1;
   }
