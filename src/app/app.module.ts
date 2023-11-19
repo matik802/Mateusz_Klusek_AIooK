@@ -6,12 +6,14 @@ import { RegionComponent } from './region/region.component';
 import { RegionsComponent } from './regions/regions.component';
 
 import { FormsModule } from '@angular/forms';
+import { ManageRegionListComponent } from './manage-region-list/manage-region-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegionComponent,
-    RegionsComponent
+    RegionsComponent,
+    ManageRegionListComponent
   ],
   imports: [
     BrowserModule,

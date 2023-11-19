@@ -1,0 +1,11 @@
+<div class="all"> 
+    <div>Regions:
+        <ul>
+            <li *ngFor="let region of RegionList;index as i" 
+            [class.selected]="i === selected">
+                <p *ngIf="region.friendly" style="background-color:green;">{{region.name}}</p>
+                <p *ngIf="!region.friendly" style="background-color:red;">{{region.name}}</p>
+            </li>
+        </ul>
+    </div>
+</div>
