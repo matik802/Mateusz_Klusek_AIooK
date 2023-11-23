@@ -8,8 +8,8 @@ import { RegionComponent } from '../region/region.component';
 })
 export class RegionsComponent implements OnInit {
   
-  RegionArray: RegionComponent[];
-  selected: number;
+  private RegionArray: RegionComponent[];
+  private selected: number;
 
   constructor() {
     
@@ -21,7 +21,16 @@ export class RegionsComponent implements OnInit {
     ]
     this.selected = -1;
   }
-  select(which: number): void {
+  getRegionArray() : RegionComponent[] {
+    return this.RegionArray;
+  }
+  setRegionArray(RegionArray: RegionComponent[]) {
+    this.RegionArray = RegionArray;
+  }
+  getSelected(): number {
+    return this.selected;
+  }
+  setSelected(which: number): void {
        this.selected = which;
      }
   save(): void {

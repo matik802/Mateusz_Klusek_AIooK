@@ -8,11 +8,11 @@ import { Component, Inject, inject } from '@angular/core';
 export class RegionComponent {
     
   name: string;
-  dateArrival: Date;
-  dateReturn: Date;
-  tribeCount: number;
-  amazingItems: string[];
-  friendly: boolean;
+  private dateArrival: Date;
+  private dateReturn: Date;
+  private tribeCount: number;
+  private amazingItems: string[];
+  private friendly: boolean;
   constructor(
     @Inject(String) name: string, 
     dateArrival: Date, 
@@ -26,5 +26,26 @@ export class RegionComponent {
       this.tribeCount = tribeCount;
       this.amazingItems = amazingItems;
       this.friendly = friendly;
+  }
+  getName(): string {
+    return this.name;
+  }
+  setName(name: string) {
+    this.name = name;
+  }
+  getDateArrival(): Date {
+    return this.dateArrival;
+  }
+  getDateReturn(): Date {
+    return this.dateReturn;
+  }
+  getTribeCount(): number {
+    return this.tribeCount;
+  }
+  getAmazingItems(): string[] {
+    return this.amazingItems;
+  }
+  getFriendly(): boolean {
+    return this.friendly;
   }
 }
