@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegionComponent } from '../region/region.component';
+import { Region } from 'src/Region';
 
 @Component({
   selector: 'app-regions',
@@ -8,29 +9,20 @@ import { RegionComponent } from '../region/region.component';
 })
 export class RegionsComponent implements OnInit {
   
-  private RegionArray: RegionComponent[];
-  private selected: number;
+  RegionArray: Region[];
+  selected: number;
 
   constructor() {
     
   }
   ngOnInit(): void {
     this.RegionArray = [
-      new RegionComponent("Kreta",new Date('2000-03-18'),new Date('2000-03-26'),3,["Statue","Pearl"],true),
-      new RegionComponent("Rodos",new Date('2004-03-11'),new Date('2004-03-14'),20,["Sword","Crossbow"],false)
+      new Region("Kreta",new Date('2000-03-18'),new Date('2000-03-26'),3,["Statue","Pearl"],true),
+      new Region("Rodos",new Date('2004-03-11'),new Date('2004-03-14'),20,["Sword","Crossbow"],false)
     ]
     this.selected = -1;
   }
-  getRegionArray() : RegionComponent[] {
-    return this.RegionArray;
-  }
-  setRegionArray(RegionArray: RegionComponent[]) {
-    this.RegionArray = RegionArray;
-  }
-  getSelected(): number {
-    return this.selected;
-  }
-  setSelected(which: number): void {
+  select(which: number): void {
        this.selected = which;
      }
   save(): void {

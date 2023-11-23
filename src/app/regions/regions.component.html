@@ -1,24 +1,24 @@
 <div>
-    <app-manage-region-list [RegionList]="getRegionArray()" [selected]="getSelected()" (selectRegionInParent)="setSelected($event)"> </app-manage-region-list>
-    <div *ngIf="getSelected() > -1"> 
+    <app-manage-region-list [RegionList]="RegionArray" [selected]="selected" (selectRegionInParent)="select($event)"> </app-manage-region-list>
+    <div *ngIf="selected > -1"> 
         <h2>Edit:</h2>
         <div>
             <label>Region:
-                <input (click)="lock($event)" [(ngModel)]="getRegionArray()[getSelected()].name" />
-                <p>Data przybycia: {{getRegionArray()[getSelected()].getDateArrival() | date: 'dd-MM-yyyy'}}</p>
-                <p>Data powrotu: {{getRegionArray()[getSelected()].getDateReturn() | date: 'dd-MM-yyyy'}}</p>
-                <div *ngIf="(getRegionArray()[getSelected()].getTribeCount() >= 5 && getRegionArray()[getSelected()].getTribeCount() < 20) || (getRegionArray()[getSelected()].getTribeCount() >= 20 && (getRegionArray()[getSelected()].getTribeCount()%10 >= 5 || getRegionArray()[getSelected()].getTribeCount()%10 <= 1))">
-                    <p>{{getRegionArray()[getSelected()].getTribeCount()}} plemion</p>
+                <input (click)="lock($event)" [(ngModel)]="RegionArray[selected].Name" />
+                <p>Data przybycia: {{RegionArray[selected].DateArrival | date: 'dd-MM-yyyy'}}</p>
+                <p>Data powrotu: {{RegionArray[selected].DateReturn | date: 'dd-MM-yyyy'}}</p>
+                <div *ngIf="(RegionArray[selected].TribeCount >= 5 && RegionArray[selected].TribeCount < 20) || (RegionArray[selected].TribeCount >= 20 && (RegionArray[selected].TribeCount%10 >= 5 || RegionArray[selected].TribeCount%10 <= 1))">
+                    <p>{{RegionArray[selected].TribeCount}} plemion</p>
                 </div>
-                <div *ngIf="(getRegionArray()[getSelected()].getTribeCount() > 1 && getRegionArray()[getSelected()].getTribeCount() < 5) || (getRegionArray()[getSelected()].getTribeCount() >= 20 && (getRegionArray()[getSelected()].getTribeCount()%10 < 5 && getRegionArray()[getSelected()].getTribeCount()%10 > 1))">
-                    <p>{{getRegionArray()[getSelected()].getTribeCount()}} plemiona</p>
+                <div *ngIf="(RegionArray[selected].TribeCount > 1 && RegionArray[selected].TribeCount < 5) || (RegionArray[selected].TribeCount >= 20 && (RegionArray[selected].TribeCount%10 < 5 && RegionArray[selected].TribeCount%10 > 1))">
+                    <p>{{RegionArray[selected].TribeCount}} plemiona</p>
                 </div>
-                <div *ngIf="getRegionArray()[getSelected()].getTribeCount() == 1">
-                    <p>{{getRegionArray()[getSelected()].getTribeCount()}} plemię</p>
+                <div *ngIf="RegionArray[selected].TribeCount == 1">
+                    <p>{{RegionArray[selected].TribeCount}} plemię</p>
                 </div>
                 <p>Niezwykłe przedmioty:</p>
                 <ul>
-                    <li *ngFor="let amazingItem of getRegionArray()[getSelected()].getAmazingItems();index as i">
+                    <li *ngFor="let amazingItem of RegionArray[selected].AmazingItems;index as i">
                         {{amazingItem}}
                     </li>
                 </ul>
